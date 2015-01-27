@@ -27,6 +27,7 @@ public class PictureTester
     beach.explore();
   }
   
+  /** keeps only red */
   public static void testKeepOnlyRed()
   {
     Picture beach = new Picture("beach.jpg");
@@ -35,6 +36,7 @@ public class PictureTester
     beach.explore();
   }
   
+  /** keeps only green */
   public static void testKeepOnlyGreen()
   {
     Picture beach = new Picture("beach.jpg");
@@ -86,6 +88,31 @@ public class PictureTester
 	  swan.explore();
   }
   
+  /** tests greyscale */
+  public static void testGrayScale()
+  {
+	 Picture kitten2 = new Picture("jenny-red.jpg");
+	 kitten2.explore();
+	 kitten2.grayScale();
+	 kitten2.explore();
+  }
+  
+  public static void testFixUnderWater()
+  {
+	  Picture water = new Picture("water.jpg");
+	  water.explore();
+	  water.underWater();
+	  water.explore();
+  }
+  
+  public static void testMirrorArms()
+  {
+	  Picture snowMan = new Picture ("snowman.jpg");
+	  snowMan.explore();
+	  snowMan.mirrorArms();
+	  snowMan.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -98,22 +125,22 @@ public class PictureTester
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
-    testGrayscale();
-    testFixUnderwater();
-    testMirrorVertical();
-    testMirrorTemple();
+    //testGrayScale();
+    //testFixUnderWater();
+    //testMirrorVertical();
+    //testMirrorTemple();
     testMirrorArms();
-    testMirrorGull();
-    testMirrorDiagonal();
-    testCollage();
-    testCopy();
-    testEdgeDetection();
-    testEdgeDetection2();
-    testChromakey();
-    testEncodeAndDecode();
-    testGetCountRedOverValue(250);
-    testSetRedToHalfValueInTopHalf();
-    testClearBlueOverValue(200);
-    testGetAverageForColumn(0);
+    //testMirrorGull();
+    //testMirrorDiagonal();
+    //testCollage();
+    //testCopy();
+    //testEdgeDetection();
+    //testEdgeDetection2();
+    //testChromakey();
+    //testEncodeAndDecode();
+    //testGetCountRedOverValue(250);
+    //testSetRedToHalfValueInTopHalf();
+    //testClearBlueOverValue(200);
+    //testGetAverageForColumn(0);
   }
 }

@@ -64,22 +64,29 @@ public class IntArrayWorkerTester
     int [][] nums2 = {{1, 2, 3}, {4, 5, 6}};
     worker.setMatrix(nums2);
     int largest = worker.getLargest();
-    System.out.println("Largest should be 6 and is " + largest); 
+    System.out.println("Largest should be 6 and is " + largest);
+    worker.print();
+    
     // test when largest is first
     int[][] nums3 = {{6, 2, 3}, {4, 5, 1}};
     worker.setMatrix(nums3);
     largest = worker.getLargest();
     System.out.println("Largest should be 6 and is " + largest); 
+    worker.print();
+    
     // test when largest is in the middle
     int[][] nums4 = {{1, 2, 3}, {6, 5, 1}};
     worker.setMatrix(nums4);
     largest = worker.getLargest();
     System.out.println("Largest should be 6 and is " + largest);
+    worker.print();
+    
     // test when duplicate largest
    int[][] nums5 = {{6, 2, 6}, {4, 5, 1}};
     worker.setMatrix(nums5);
     largest = worker.getLargest();
     System.out.println("Largest should be 6 and is " + largest);
+    worker.print();
   }
   
   /** Method to test getColTotal */
@@ -94,6 +101,7 @@ public class IntArrayWorkerTester
     System.out.println("Total for column 1 should be 7 and is " + total);
     total = worker.getColTotal(2);
     System.out.println("Total for column 2 should be 9 and is " + total);
+    worker.print();
   }
   
   public static void main(String[] args)
@@ -103,7 +111,7 @@ public class IntArrayWorkerTester
     testGetCount(); 
     testGetTotal();
     testGetTotalNested();
-    //testGetLargest();
-    //testGetColTotal();
+    testGetLargest();
+    testGetColTotal();
   }
 }

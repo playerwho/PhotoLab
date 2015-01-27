@@ -1,7 +1,10 @@
 package pixLab.classes;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-
+// interface, promise to implement methods!
+// *****
+// *****
+// *****
 /**
  * Interface to describe a digital picture.  A digital picture can have an 
  * associated file name.  It can have a title.  It has pixels 

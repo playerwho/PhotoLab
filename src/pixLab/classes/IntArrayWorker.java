@@ -78,17 +78,51 @@ public class IntArrayWorker
 	
 	public int getLargest()
 	{
+		int largest = Integer.MIN_VALUE;
+		for (int row = 0; row < matrix.length; row++)
+		{
+			for (int col = 0; col < matrix[0].length; col++)
+			{
+				if(matrix[row][col] > largest)
+				{
+					largest = matrix[row][col];
+				}
+			}
+		}
 		
+//     For loop for getLargest method, same as for each loop.
+//		
+//		for(int [] row:matrix)
+//		 {
+//			 for(int value:row)
+//			 { 
+//				 if(value > largest)
+//				 {
+//					 largest = value;;
+//				 }
+//			 }
+//		 }
 		
-		return 0;
+		return largest;
 	}
 	
-	public int getColTotal()
+	public int getColTotal(int colValue)
 	{
+		int totalCol = 0;
+	
+//		For each loop for getColTotal
+//		
+//		for (int row = 0; row < matrix.length; row++)
+//		{
+//			totalCol += matrix[row][colValue];
+//		}
 		
+		for(int [] row : matrix)
+		{
+			totalCol += row[colValue];
+		}
 		
-		
-		return 0;
+		return totalCol;
 	}
 
 	/**

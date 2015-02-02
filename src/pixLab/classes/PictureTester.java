@@ -91,12 +91,15 @@ public class PictureTester
   /** tests greyscale */
   public static void testGrayScale()
   {
-	 Picture kitten2 = new Picture("jenny-red.jpg");
+	 Picture kitten2 = new Picture("kitten2.jpg");
 	 kitten2.explore();
 	 kitten2.grayScale();
 	 kitten2.explore();
   }
   
+  /**
+   * test for fixUnderWater method
+   */
   public static void testFixUnderWater()
   {
 	  Picture water = new Picture("water.jpg");
@@ -105,6 +108,9 @@ public class PictureTester
 	  water.explore();
   }
   
+  /*
+   * method to test mirrorArms
+   */
   public static void testMirrorArms()
   {
 	  Picture snowMan = new Picture ("snowman.jpg");
@@ -113,24 +119,72 @@ public class PictureTester
 	  snowMan.explore();
   }
   
+  /**
+   * method that tests the mirrorGull method
+   */
+  public static void testMirrorGull()
+  {
+	  Picture gull = new Picture ("seagull.jpg");
+	  gull.explore();
+	  gull.mirrorGull();
+	  gull.explore();
+  }
+  
+  /**
+   * sets a picture to a sepia tone
+   */
+  public static void testSepiaTone()
+  {
+	  Picture snowMan = new Picture ("snowman.jpg");
+	  snowMan.explore();
+	  snowMan.sepiaTone();
+	  snowMan.explore();
+  }
+  
+  /**
+   * method to test Noizy which sets pixels in every other row to either black or white
+   */
+  public static void testNoizy()
+  {
+	  Picture motor = new Picture ("blueMotorcycle.jpg");
+	  motor.explore();
+	  motor.noizy();
+	  motor.explore();
+  }
+  
+  /**
+   * method that tests completeNoize which sets every pixel to either black or white
+   */
+  public static void testCompleteNoize()
+  {
+  Picture look = new Picture("femaleLionAndHall.jpg");
+  look.explore();
+  look.completeNoize();
+  look.explore();
+  }
+  
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
   {
-    // uncomment a call here to run a test
-    // and comment out the ones you don't want
-    // to run
-    //testZeroBlue();
-    //testOnlyBlue();
-    //testKeepOnlyRed();
-    //testKeepOnlyGreen();
-    //testNegate();
-    //testGrayScale();
-    //testFixUnderWater();
-    //testMirrorVertical();
-    //testMirrorTemple();
-    testMirrorArms();
-    //testMirrorGull();
+//     uncomment a call here to run a test
+//     and comment out the ones you don't want
+//     to run
+//	  testNoizy();
+//	  testCompleteNoize();
+//	  testSepiaTone();
+//    testZeroBlue();
+//    testOnlyBlue();
+//    testKeepOnlyRed();
+//    testKeepOnlyGreen();
+//    testNegate();
+//    testGrayScale();
+//    testFixUnderWater();
+//    testMirrorVertical();
+    testMirrorTemple();
+//    testMirrorArms();
+//    testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();

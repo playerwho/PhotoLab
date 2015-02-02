@@ -180,7 +180,120 @@ public class Picture extends SimplePicture
 			}
 		}
 	}
-
+	
+	/**
+	 * mirrors the stupid bird to the other side of the screen
+	 */
+	public void mirrorGull()
+	{
+		int mirrorPoint = 366;
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+		
+		for(int row = 228; row < mirrorPoint; row++)
+		{
+			for(int col = 85; col < 347; col++)
+			{
+				leftPixel = pixels[row][col ];
+				rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+				rightPixel.setColor(leftPixel.getColor());
+			}
+				
+		}
+	}
+	
+	/**
+	 * filter to change picture to sepia tone
+	 */
+	public void sepiaTone()
+	{
+		Pixel [][] imageMatrix = this.getPixels2D();
+		
+		for(int row = 0; row < imageMatrix.length; row ++)
+		{
+			for(int col = 0; col < imageMatrix[0].length; col++)
+			{
+				//pseudocode for filter
+				/**
+				 * change pixels to tints of brown
+				 * (112,66,20) to (255,255,255)
+				 * cut red to fit between 112-255
+				 * shift green to half of red
+				 * shift blue to 1/3 of green
+				 */
+				Pixel sepiaPixel = imageMatrix[row][col];
+				int averageColor = (sepiaPixel.getRed() + sepiaPixel.getGreen() + sepiaPixel.getBlue()) /3;
+				if (averageColor < 85)
+				{
+					sepiaPixel.setGreen(sepiaPixel.getRed()/2);
+					sepiaPixel.setBlue(sepiaPixel.getGreen()/3);
+				}
+				else
+				{
+					sepiaPixel.setRed((int)(sepiaPixel.getRed() * 0.9));
+					sepiaPixel.setGreen((int)(sepiaPixel.getRed()* 0.8));
+					sepiaPixel.setBlue((int)(sepiaPixel.getRed()* 0.4));
+				}
+				
+			}
+		}
+	}
+	
+	/**
+	 * method that sets pixels in every other row to either black or white
+	 */
+	public void noizy()
+	{
+		Pixel [][] imageMatrix = this.getPixels2D();
+		for (int row = 0; row < imageMatrix.length; row += 2)
+		{
+			for(int col = 0; col < imageMatrix[0].length; col++)
+			{
+				int randomNoize = (int) (Math.random() * 2);
+				if(randomNoize == 1)
+				{
+					imageMatrix[row][col].setRed(0);
+					imageMatrix[row][col].setGreen(0);
+					imageMatrix[row][col].setBlue(0);
+				}
+				else
+				{
+					imageMatrix[row][col].setBlue(255);
+					imageMatrix[row][col].setRed(255);
+					imageMatrix[row][col].setGreen(255);
+				}			
+			}
+		}
+	}
+	
+	/**
+	 * method that sets every pixel to either black or white
+	 */
+	public void completeNoize()
+	{
+		Pixel [][] imageMatrix = this.getPixels2D();
+		for (int row = 0; row < imageMatrix.length; row ++)
+		{
+			for(int col = 0; col < imageMatrix[0].length; col++)
+			{
+				int randomNoize = (int) (Math.random() * 2);
+				if(randomNoize == 1)
+				{
+					imageMatrix[row][col].setRed(0);
+					imageMatrix[row][col].setGreen(0);
+					imageMatrix[row][col].setBlue(0);
+				}
+				else
+				{
+					imageMatrix[row][col].setBlue(255);
+					imageMatrix[row][col].setRed(255);
+					imageMatrix[row][col].setGreen(255);
+				}			
+			}
+		}
+	}
+	
 	/** Mirror just part of a picture of a temple */
 	public void mirrorTemple()
 	{
@@ -196,14 +309,18 @@ public class Picture extends SimplePicture
 			// loop from 13 to just before the mirror point
 			for (int col = 13; col < mirrorPoint; col++)
 			{
-
+                count ++;
 				leftPixel = pixels[row][col];
 				rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
 				rightPixel.setColor(leftPixel.getColor());
+				System.out.println(count);
 			}
 		}
 	}
 	
+	/**
+	 * mirrors the arms of the snowman.jpg
+	 */
 	public void mirrorArms()
 	{
 		int mirrorPoint = 225;
@@ -341,7 +458,7 @@ public class Picture extends SimplePicture
 	{
 		Picture beach = new Picture("beach.jpg");
 		beach.explore();
-		beach.negateColor();
+		beach.sepiaTone();
 		beach.explore();
 	}
 

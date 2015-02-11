@@ -163,6 +163,14 @@ public class PictureTester
   look.explore();
   }
   
+  public static void testMirrorDiagonal()
+  {
+	  Picture beach = new Picture("beach.jpg");
+	  beach.explore();
+	  beach.mirrorDiagonal();
+	  beach.explore();
+  }
+  
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -182,12 +190,12 @@ public class PictureTester
 //    testGrayScale();
 //    testFixUnderWater();
 //    testMirrorVertical();
-    testMirrorTemple();
+//    testMirrorTemple();
 //    testMirrorArms();
 //    testMirrorGull();
-    //testMirrorDiagonal();
-    //testCollage();
-    //testCopy();
+//    testMirrorDiagonal();
+    testCollage();
+    testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();

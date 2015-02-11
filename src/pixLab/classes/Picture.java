@@ -367,6 +367,23 @@ public class Picture extends SimplePicture
 			}
 		}
 	}
+	
+	public void partialCopy(Picture fromPic, int startRow, int startCol)
+	{
+		Pixel fromPixel = null;
+		Pixel toPixel = null;
+		Pixel[][] toPixels = this.getPixels2D();
+		Pixel[][] fromPixels = fromPic.getPixels2D();
+		for (int fromRow = 0, toRow = startRow; fromRow < fromPixels.length && toRow < toPixels.length; fromRow++, toRow++)
+		{
+			for (int fromCol = 0, toCol = startCol; fromCol < fromPixels[0].length && toCol < toPixels[0].length; fromCol++, toCol++)
+			{
+				fromPixel = fromPixels[fromRow][fromCol];
+				toPixel = toPixels[toRow][toCol];
+				toPixel.setColor(fromPixel.getColor());
+			}
+		}
+	}
 
 	/** Method to create a collage of several pictures */
 	public void createCollage()
@@ -434,7 +451,7 @@ public class Picture extends SimplePicture
 	 * makes the fish in water.jpg clearer to see
 	 */
 	public void underWater()
-	{
+	{	
 		Pixel[][] pixels = this.getPixels2D();
 		for (Pixel[] rowArray : pixels)
 		{
@@ -448,7 +465,29 @@ public class Picture extends SimplePicture
 					pixelObj.setRed(red * 2);	
 				}
 			}
-		}
+		}		
+	}
+	
+	
+	/**
+	 * mirrors a picture across a diagonal line
+	 */
+	public void mirrorDiagonal()
+	{
+		Pixel leftPixel = null;
+		Pixel topPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+		
+		for(int row = 0; row < pixels.length; row++)
+		{
+			for(int col = 0; col < pixels[0].length; col++)
+			{
+				leftPixel = pixels[(int) (col/1.339)][row];
+				topPixel = pixels[row][(int) (col/1.339)];
+				topPixel.setColor(leftPixel.getColor());
+			}
+				
+		}	
 	}
 
 	/*
@@ -458,7 +497,7 @@ public class Picture extends SimplePicture
 	{
 		Picture beach = new Picture("beach.jpg");
 		beach.explore();
-		beach.sepiaTone();
+		beach.mirrorDiagonal();
 		beach.explore();
 	}
 

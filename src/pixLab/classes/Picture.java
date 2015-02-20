@@ -489,16 +489,110 @@ public class Picture extends SimplePicture
 				
 		}	
 	}
+	
+	public void mirrorRightToLeft()
+	{
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		int width = pixels[0].length;
+		for (int row = 0; row < pixels.length; row++)
+		{
+			for (int col = 0; col < width / 2; col++)
+			{
+				rightPixel = pixels[row][width - 1 - col];
+				leftPixel = pixels[row][col];
+				leftPixel.setColor(rightPixel.getColor());
+			}
+		}
+	}
+	
+	public void mirrorHorizontal()
+	{
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel bottomPixel = null;
+		Pixel topPixel = null;
+		int height = pixels.length;
+		for (int row = 0; row < height / 2; row++)
+		{
+			for (int col = 0; col < pixels[0].length; col++)
+			{
+				topPixel = pixels[row][col];
+				bottomPixel = pixels[height - 1 - row][col];
+				bottomPixel.setColor(topPixel.getColor());
+			}
+		}
+	}
+	
+	public void mirrorBottom()
+	{
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel bottomPixel = null;
+		Pixel topPixel = null;
+		int height = pixels.length;
+		for (int row = 0; row < height / 2; row++)
+		{
+			for (int col = 0; col < pixels[0].length; col++)
+			{
+				topPixel = pixels[height - 1 - row][col];
+				bottomPixel = pixels[row][col];
+				bottomPixel.setColor(topPixel.getColor());
+			}
+		}
+	}
+	
+	public void edgeDetection2(int edgeDist)
+	{
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+		Color rightColor = null;
+		for (int row = 0; row < pixels.length - 1; row++)
+		{
+			for (int col = 0; col < pixels[0].length; col++)
+			{
+				leftPixel = pixels[row][col];
+				rightPixel = pixels[row + 1][col];
+				rightColor = rightPixel.getColor();
+				if (leftPixel.colorDistance(rightColor) > edgeDist)
+					leftPixel.setColor(Color.BLACK);
+				else
+					leftPixel.setColor(Color.WHITE);
+			}
+		}
+	}
+	
+	public void greenScreen()
+	{
+		Picture heli = new Picture("heli.jpg");
+		Picture beach = new Picture("beach.jpg");
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel greenPicture = null;
+		Pixel backGround = null;
+		for (int row = 0; row < pixels.length - 1; row++)
+		{
+			for (int col = 0; col < pixels[0].length; col++)
+			{
+				
+			}
+		}
+		
+
+		
+	}
 
 	/*
 	 * Main method for testing - each class in Java can have a main method
 	 */
 	public static void main(String[] args)
 	{
-		Picture beach = new Picture("beach.jpg");
+		Picture beach = new Picture("snowMan.jpg");
 		beach.explore();
-		beach.mirrorDiagonal();
+		beach.mirrorArms();
 		beach.explore();
+		
 	}
+
+	
 
 } // this } is the end of class Picture, put all new methods before this

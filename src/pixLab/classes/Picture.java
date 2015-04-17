@@ -586,9 +586,13 @@ public class Picture extends SimplePicture
 	 */
 	public static void main(String[] args)
 	{
-		Picture beach = new Picture("snowMan.jpg");
+		Picture beach = new Picture("decepticon.jpg");
 		beach.explore();
-		beach.mirrorArms();
+		beach.edgeDetection2(10);
+		beach.negateColor();
+		beach.zeroBlue();
+		beach.onlyRed();
+		beach.mirrorBottom();
 		beach.explore();
 		
 	}
